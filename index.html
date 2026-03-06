@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GT3 RS — My Dream Car</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: white;
+      font-family: 'Outfit', sans-serif;
+      color: #1a1a1a;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #ddd;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      text-decoration: none;
+      color: #1a1a1a;
+    }
+
+    .logo span {
+      color: #c0111f;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #666;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    nav a:hover {
+      color: #c0111f;
+    }
+
+    nav a.active {
+      color: #c0111f;
+    }
+
+    /* hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 88vh;
+      align-items: center;
+    }
+
+    .hero-left {
+      padding: 70px 50px;
+    }
+
+    .hero-left p.tag {
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c0111f;
+      margin-bottom: 18px;
+    }
+
+    .hero-left h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .hero-left h1 em {
+      color: #c0111f;
+      font-style: italic;
+    }
+
+    .hero-left p.desc {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #666;
+      max-width: 400px;
+      margin-bottom: 32px;
+    }
+
+    .btns {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: #c0111f;
+      color: white;
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid #c0111f;
+    }
+
+    .btn:hover {
+      background-color: #a00f1a;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #1a1a1a;
+      border: 1px solid #ccc;
+    }
+
+    .btn-outline:hover {
+      background-color: #1a1a1a;
+      color: white;
+      border-color: #1a1a1a;
+    }
+
+    .hero-right {
+      height: 100%;
+      min-height: 88vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* specs bar */
+    .specs-bar {
+      background-color: #1a1a1a;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .spec {
+      padding: 34px 28px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .spec:last-child {
+      border-right: none;
+    }
+
+    .spec-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: white;
+      line-height: 1;
+    }
+
+    .spec-num span {
+      font-size: 1.2rem;
+      color: #c0111f;
+    }
+
+    .spec-label {
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 6px;
+    }
+
+    /* sections */
+    .section {
+      padding: 80px 50px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c0111f;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    h2 em {
+      color: #c0111f;
+      font-style: normal;
+    }
+
+    .lead {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: #666;
+      max-width: 600px;
+      margin-bottom: 16px;
+    }
+
+    /* why section */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .why-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .why-card {
+      background-color: #f5f3f0;
+      padding: 24px 20px;
+      border-top: 3px solid transparent;
+    }
+
+    .why-card:hover {
+      border-top-color: #c0111f;
+    }
+
+    .why-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .why-card p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* gallery */
+    .gallery {
+      background-color: #f5f3f0;
+      padding: 80px 50px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 290px 290px;
+      gap: 4px;
+      margin-top: 30px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-item:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .gallery-cap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      padding: 14px 12px 10px;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-item:hover .gallery-cap {
+      opacity: 1;
+    }
+
+    /* timeline */
+    .timeline {
+      margin-top: 44px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: #e8e8e8;
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 36px;
+      padding-left: 30px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #c0111f;
+    }
+
+    .tl-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: #c0111f;
+      min-width: 68px;
+      line-height: 1.1;
+      padding-top: 2px;
+    }
+
+    .tl-gen {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .tl-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .tl-desc {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.75;
+      max-width: 540px;
+    }
+
+    .tl-stats {
+      display: flex;
+      gap: 22px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tl-stat {
+      font-size: 0.78rem;
+      color: #666;
+    }
+
+    .tl-stat strong {
+      color: #1a1a1a;
+      display: block;
+      font-size: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .tl-img {
+      width: 190px;
+      height: 125px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid #e8e8e8;
+    }
+
+    /* nurburgring */
+    .nurb-banner {
+      background-color: #1a1a1a;
+      padding: 60px 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .nurb-banner h2 {
+      color: white;
+    }
+
+    .nurb-banner h2 em {
+      color: #c0111f;
+    }
+
+    .nurb-banner p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-top: 14px;
+    }
+
+    .nurb-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .nurb-stat {
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 28px;
+    }
+
+    .nurb-stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      color: #c0111f;
+      line-height: 1;
+    }
+
+    .nurb-stat-lbl {
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 8px;
+    }
+
+    footer {
+      background-color: #f5f3f0;
+      padding: 36px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #e8e8e8;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    footer ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+    }
+
+    footer a {
+      font-size: 0.8rem;
+      color: #666;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    footer a:hover {
+      color: #c0111f;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: #666;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">GT3 <span>RS</span></a>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="networking.html">Networking</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<!-- hero -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="tag">My Dream Car · CN Project 1 · Spring 2026</p>
+    <h1>Porsche 911<br><em>GT3 RS</em></h1>
+    <p class="desc">The most extreme, track-focused road car Porsche has ever built. A naturally aspirated flat-six screaming to 9,000 RPM, active aero that generates 409 kg of downforce, and zero compromises.</p>
+    <div class="btns">
+      <a href="#history" class="btn">See the History</a>
+      <a href="networking.html" class="btn btn-outline">Networking Concepts</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="different.jpg" alt="Porsche 911 GT3 RS" />
+  </div>
+</section>
+
+<!-- specs -->
+<div class="specs-bar">
+  <div class="spec">
+    <div class="spec-num">518<span>hp</span></div>
+    <div class="spec-label">Horsepower</div>
+  </div>
+  <div class="spec">
+    <div class="spec-num">3.2<span>s</span></div>
+    <div class="spec-label">0–60 mph</div>
+  </div>
+  <div class="spec">
+    <div class="spec-num">9,000<span>rpm</span></div>
+    <div class="spec-label">Redline</div>
+  </div>
+  <div class="spec">
+    <div class="spec-num">409<span>kg</span></div>
+    <div class="spec-label">Downforce</div>
+  </div>
+</div>
+
+<!-- gallery -->
+<div class="gallery">
+  <div class="section-label">Gallery</div>
+  <h2>The Car in <em>Photos</em></h2>
+  <p style="color:#666; font-size:0.95rem; line-height:1.8; max-width:560px; margin-bottom:28px;">From the iconic rear wing to the focused cockpit — the GT3 RS is visually striking from every angle.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="Front.jpg" alt="GT3 RS front" onerror="this.style.background='#f0ece4'" />
+      <div class="gallery-cap">Carrera White Metallic — 911 GT3 RS</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Rear.jpg" alt="GT3 RS rear wing" onerror="this.style.background='#e8e8e8'" />
+      <div class="gallery-cap">Massive Swan-Neck Rear Wing</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Interior.jpg" alt="GT3 RS interior" onerror="this.style.background='#e8e8e8'" />
+      <div class="gallery-cap">Race-Focused Interior</div>
+    </div>
+    <div class="gallery-item">
+      <img src="997 gt3rs.jpg" alt="997 GT3 RS" onerror="this.style.background='#e8e8e8'" />
+      <div class="gallery-cap">Classic 997 Generation</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Side.jpg" alt="GT3 RS side" onerror="this.style.background='#e8e8e8'" />
+      <div class="gallery-cap">992 GT3 RS Side Profile</div>
+    </div>
+  </div>
+</div>
+
+<!-- why i love it -->
+<section class="section">
+  <div class="why-grid">
+    <div>
+      <div class="section-label">Why I Love It</div>
+      <h2>No Turbos.<br>No Compromises.</h2>
+      <p class="lead">Most fast cars today rely on turbochargers and all-wheel drive to hit their numbers. The GT3 RS does it the hard way, it's a pure, screaming naturally aspirated flat-six, rear-wheel drive, and race car aerodynamics.</p>
+      <p class="lead">It's loud, physical, and raw. That's exactly why I love this car.</p>
+    </div>
+    <div class="why-cards">
+      <div class="why-card">
+        <h3>Naturally Aspirated</h3>
+        <p>No turbos. A 4.0L flat-six revving all the way to 9,000 RPMs with an exhaust sound unlike anything else on earth.</p>
+      </div>
+      <div class="why-card">
+        <h3>Active Aero</h3>
+        <p>The rear wing adjusts on the fly, DRS on straights, max downforce in corners. Straight from motorsport, but street legal.</p>
+      </div>
+      <div class="why-card">
+        <h3>Lightweight</h3>
+        <p>Carbon fiber roof, hood, and front fenders. The Weissach Package saves an additional 40 lbs.</p>
+      </div>
+      <div class="why-card">
+        <h3>Racing DNA</h3>
+        <p>The suspension, aero, and engine all come directly from the 911 RSR (an actual race car) that dominates GT Endurance racing worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- history timeline -->
+<section class="section" id="history" style="padding-top: 0;">
+  <div class="section-label">History</div>
+  <h2>Every <em>Generation</em></h2>
+  <p class="lead">The GT3 RS nameplate has been around since 2004. Here's how it evolved from an idea into the most extreme road car Porsche has ever built.</p>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-year">1999</div>
+      <div>
+        <div class="tl-gen">996 Generation · The Beginning</div>
+        <div class="tl-title">The GT3 Badge is Born</div>
+        <div class="tl-desc">
+          Unveiled at the Geneva Motor Show in 1999, the 996 GT3 was the first car to wear the GT3 name. It was built purely as a homologation special — Porsche needed a road-legal version of the car they were racing in the FIA GT3 class. Powered by the legendary "Mezger" flat-six engine with roots in the Le Mans-winning 911 GT1 race car, it became the first road car to lap the Nürburgring in under 8 minutes. The RS variant followed in 2004 but was never officially sold in the US.
+        </div>
+        <div class="tl-stats">
+          <div class="tl-stat"><strong>360 hp</strong>Engine</div>
+          <div class="tl-stat"><strong>3.6L NA</strong>Flat-Six</div>
+          <div class="tl-stat"><strong>Mezger</strong>Engine Block</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2006</div>
+      <div>
+        <div class="tl-gen">997 Generation · The Purist's Choice</div>
+        <div class="tl-title">The Last True Analog GT3 RS</div>
+        <div class="tl-desc">
+          The 997 generation is what most enthusiasts think of when they picture the "perfect" GT3 RS. It returned to the classic 911 silhouette and brought the first Active Suspension Management (PASM) system. The 2007 RS variant added wider bodywork and a more focused setup. The series peaked in 2011 with the legendary <strong>GT3 RS 4.0</strong> — a 500 hp, 4.0L limited edition (only 600 units made) widely considered one of the greatest driver's cars ever built.
+        </div>
+        <div class="tl-stats">
+          <div class="tl-stat"><strong>409–500 hp</strong>Engine Range</div>
+          <div class="tl-stat"><strong>6-Speed Manual</strong>Gearbox</div>
+          <div class="tl-stat"><strong>600 units</strong>RS 4.0 Made</div>
+        </div>
+      </div>
+      <img class="tl-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Porsche_997_GT3_RS_-_Flickr_-_andrewbasterfield.jpg/800px-Porsche_997_GT3_RS_-_Flickr_-_andrewbasterfield.jpg" alt="997 GT3 RS" onerror="this.style.display='none'" />
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2015</div>
+      <div>
+        <div class="tl-gen">991 Generation · Modern Muscle</div>
+        <div class="tl-title">Bigger, Wider, More Downforce</div>
+        <div class="tl-desc">
+          The 991 GT3 RS was a major leap forward in size and downforce. The wider Turbo bodyshell gave it a muscular stance, and the front fender air vents became a signature visual detail. This was also the first GT3 RS to drop the manual gearbox entirely — only the 7-speed PDK dual-clutch was offered, which upset purists but allowed faster lap times. The 4.0L engine screamed to 8,800 RPM and generated 330 kg of downforce.
+        </div>
+        <div class="tl-stats">
+          <div class="tl-stat"><strong>493 hp</strong>Engine</div>
+          <div class="tl-stat"><strong>PDK Only</strong>No Manual</div>
+          <div class="tl-stat"><strong>330 kg</strong>Downforce</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2022</div>
+      <div>
+        <div class="tl-gen">992 Generation · The Current Model</div>
+        <div class="tl-title">Active Aero. Race Car Suspension. 518 HP.</div>
+        <div class="tl-desc">
+          The current 992 GT3 RS is the most extreme road-going 911 ever made. Porsche spent over 250 hours in the wind tunnel to develop its active aerodynamics — the rear wing adjusts automatically for DRS on straights and maximum downforce in corners. The suspension is lifted directly from the 911 RSR race car. It generates a staggering 409 kg of downforce. In 2024, Porsche test driver Lars Kern lapped the Nürburgring in 6:59 — the first sub-7-minute lap by a road car with a combustion engine.
+        </div>
+        <div class="tl-stats">
+          <div class="tl-stat"><strong>518 hp</strong>Engine</div>
+          <div class="tl-stat"><strong>409 kg</strong>Downforce</div>
+          <div class="tl-stat"><strong>6:59</strong>Nürburgring Lap</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- nurburgring -->
+<div class="nurb-banner">
+  <div>
+    <div class="section-label" style="color: #c0111f;">The Green Hell</div>
+    <h2 style="color: white;">Built to <em>conquer</em> the Nürburgring</h2>
+    <p>The Nürburgring Nordschleife is a 12.9-mile race circuit in Germany with 73 corners, elevation changes over 900 feet, and a reputation that has humbled every car manufacturer on earth. The GT3 RS has been setting records there since 1999 and its getting faster every generation.</p>
+  </div>
+  <div class="nurb-stats">
+    <div class="nurb-stat">
+      <div class="nurb-stat-val">7:42</div>
+      <div class="nurb-stat-lbl">997 GT3 RS (2007)</div>
+    </div>
+    <div class="nurb-stat">
+      <div class="nurb-stat-val">7:12</div>
+      <div class="nurb-stat-lbl">991 GT3 RS (2015)</div>
+    </div>
+    <div class="nurb-stat">
+      <div class="nurb-stat-val">6:59</div>
+      <div class="nurb-stat-lbl">992 GT3 RS (2024)</div>
+    </div>
+    <div class="nurb-stat">
+      <div class="nurb-stat-val">&lt;8:00</div>
+      <div class="nurb-stat-lbl">996 GT3 (1999)</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="logo">GT3 <span>RS</span></a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="networking.html">Networking</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <p>CN PROJECT 1 · SPRING 2026</p>
+</footer>
+
+</body>
+</html>
