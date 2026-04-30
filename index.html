@@ -740,9 +740,7 @@
 </section>
  
 <script>
-  // XSS PROTECTION: DOMPurify sanitizes the email input before
-  // displaying it back to the user, stripping any injected HTML/JS.
-  // Example attack this blocks: <img src=x onerror=alert('hacked')>
+  // XSS Potextion with DOMPurify, sanitizes the email input before displaying it back to the user, stripping any injected HTML/JS.
   function handleNewsletterSignup() {
     const rawInput = document.getElementById('newsletter-email').value;
     const safeInput = DOMPurify.sanitize(rawInput);
